@@ -3,10 +3,12 @@ package api
 import (
 	"context"
 	"encoding/json"
-	"github.com/gorilla/websocket"
-	"github.com/s21platform/chat-worker/internal/model"
+	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/websocket"
+	"github.com/s21platform/chat-worker/internal/model"
 )
 
 type Server struct {
@@ -90,14 +92,14 @@ func (s *Server) sendMessages() {
 	}
 }
 
-func (s *Server) Run() {
+func (s *Server) Run(port string) {
 	http.HandleFunc("/", s.ConnectClient)
 
 	go s.sendMessages()
 	go s.usecase.ReadMessage(context.Background(), s.broadcast)
 
 	log.Println("server listening")
-	if err := http.ListenAndServe(":7777", nil); err != nil {
+	if err := http.ListenAndServe(fmt.Sprintf(":%s", port), nil); err != nil {
 		panic(err)
 	}
 }

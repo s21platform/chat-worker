@@ -13,5 +13,5 @@ func main() {
 
 	uc := usecase.New(r)
 	server := api.New(uc)
-	server.Run()
+	server.Run(cfg.Service.Port)
 }
