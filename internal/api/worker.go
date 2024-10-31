@@ -93,7 +93,7 @@ func (s *Server) sendMessages() {
 }
 
 func (s *Server) Run(port string) {
-	http.HandleFunc("/", s.ConnectClient)
+	http.HandleFunc("/ws", s.ConnectClient)
 
 	go s.sendMessages()
 	go s.usecase.ReadMessage(context.Background(), s.broadcast)
