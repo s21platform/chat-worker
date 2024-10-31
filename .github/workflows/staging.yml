@@ -33,4 +33,4 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE_DEVELOP }}
           script: |
             docker pull ${{ secrets.CR_REGISTRY }}/${{ secrets.CR_NAME }}:develop
-            docker-compose -f ~/space21/staging/staging-deployment/docker-compose.yml --env-file ~/space21/staging/.env up -d ${{ secrets.CR_NAME }}
+            bash ~/space21/staging/staging-deployment/chat-worker-reboot.sh ${{ secrets.CR_NAME }}
