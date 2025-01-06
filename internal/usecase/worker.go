@@ -3,9 +3,10 @@ package usecase
 import (
 	"context"
 	"fmt"
+	"log"
+
 	"github.com/gorilla/websocket"
 	"github.com/s21platform/chat-worker/internal/model"
-	"log"
 )
 
 type Usecase struct {

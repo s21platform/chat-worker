@@ -3,6 +3,7 @@ package redis
 import (
 	"context"
 	"fmt"
+
 	"github.com/go-redis/redis/v8"
 	"github.com/s21platform/chat-worker/internal/config"
 )

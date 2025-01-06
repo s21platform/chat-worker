@@ -2,6 +2,7 @@ package api
 
 import (
 	"context"
+
 	"github.com/s21platform/chat-worker/internal/model"
 )
 
