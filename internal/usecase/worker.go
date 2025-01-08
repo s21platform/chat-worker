@@ -24,7 +24,7 @@ func (u *Usecase) HandleMessages(ctx context.Context, client *model.Client) erro
 			return fmt.Errorf("failed to read message: %w", err)
 		}
 
-		if err := u.r.PublishMessage(ctx, msg); err != nil {
+		if err = u.r.PublishMessage(ctx, msg); err != nil {
 			log.Printf("failed to publish message: %v", err)
 		}
 	}

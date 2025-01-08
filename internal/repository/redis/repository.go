@@ -28,10 +28,11 @@ func (r *Repo) Close() {
 }
 
 func (r *Repo) PublishMessage(ctx context.Context, msg []byte) error {
-	err := r.conn.Publish(ctx, r.channel, msg)
+	err := r.conn.Publish(ctx, r.channel, msg).Err()
 	if err != nil {
 		return fmt.Errorf("failed to publish message: %v", err)
 	}
+
 	return nil
 }
 
