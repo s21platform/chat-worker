@@ -57,14 +57,14 @@ func (s *Server) ConnectClient(w http.ResponseWriter, r *http.Request) {
 	s.clients[client] = struct{}{}
 
 	go func() {
-		err := s.usecase.HandleMessages(r.Context(), client)
+		err = s.usecase.HandleMessages(r.Context(), client)
 		if err != nil {
 			log.Println("failed to handle messages:", err)
 			delete(s.clients, client)
 		}
 	}()
 
-	if err := s.usecase.WriteMessage(r.Context(), client); err != nil {
+	if err = s.usecase.WriteMessage(r.Context(), client); err != nil {
 		log.Println("failed to write message:", err)
 		delete(s.clients, client)
 	}
